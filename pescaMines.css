@@ -1,0 +1,41 @@
+body {
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#botons {
+    display: flex;
+}
+
+#inici {
+    width: 150px;
+    height: 40px;
+    border-radius: 25px;
+    border: aqua;
+    background-color: aqua;
+    margin: 5%;
+}
+
+#estats {
+    width: 150px;
+    height: 40px;
+    border-radius: 25px;
+    border: rgb(0, 255, 0);
+    background-color: rgb(0, 255, 0);
+    margin: 5%;
+}
+
+td {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+tr {
+    display: flex;
+}
