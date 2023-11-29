@@ -10,8 +10,14 @@ let myInterval;
 let segons = 0;
 let minuts = 0;
 let hores = 0;
+let tRecord;
+let tempsInici;
+let tempsFinal;
 let totalGuanyades = parseInt(localStorage.getItem('Guanyades')) || 0;
 let totalPerdudes = parseInt(localStorage.getItem('Perdudes')) || 0;
+let tempsMax = localStorage.getItem('tMax') || 0;
+let tempsRecord = localStorage.getItem('record') || 0;
+
 
 // Iniciem la partida
 function iniciarPartida() {
@@ -24,6 +30,7 @@ function iniciarPartida() {
     segons = 0;
     minuts = 0;
     hores = 0;
+    tempsInici = new Date();
     files = parseInt(prompt("Diguem el numero de files les quals vols jugar (min 10 i max 30): "));
     columnes = parseInt(prompt("Diguem el numero de columnes les quals vols jugar (min 10 i max 30): "));
 
@@ -51,7 +58,8 @@ function estadistiques() {
     let estats = window.open("", "_blank");
     estats.document.write('<p>Total de partides: ' + partidesTotal +
         '</p><br><p>Partides guayades(' + ((totalGuanyades * 100) / partidesTotal).toFixed(2) + "%): " + totalGuanyades +
-        '</p><br><p>Partides perdudes(' + ((totalPerdudes * 100) / partidesTotal).toFixed(2) + "%): " + totalPerdudes + '</p>');
+        '</p><br><p>Partides perdudes(' + ((totalPerdudes * 100) / partidesTotal).toFixed(2) + "%): " + totalPerdudes +
+        '</p><br><p>Temps record= ' + tempsRecord);
 }
 
 //Funció que crea el taulell de joc 
@@ -139,7 +147,7 @@ function banderes(fila, columna) {
         bandera++;
     }
 
-    document.getElementById("nBanderes").innerHTML = `<img src='imatges/fons20px.jpg'> =` + bandera;
+    document.getElementById("nBanderes").innerHTML = `<img src='imatges/badera20px.jpg'> =` + Math.trunc(bandera);
 }
 
 //Funció que afegira les mines 
@@ -225,6 +233,13 @@ function setMinesAdjacents(fila, columna, mAdj) {
 
 //Funció que s'activa quan has guanyat
 function victoria() {
+    tempsFinal = new Date();
+    record();
+    confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
     setTimeout(function () { alert("Has guanyat"); }, 50);
     totalGuanyades++;
     localStorage.setItem('Guanyades', totalGuanyades);
@@ -232,7 +247,7 @@ function victoria() {
         for (let i = 0; i < columnes; i++) {
             let td1 = document.getElementById(`${n}-${i}`);
             if (td1.dataset.mina == "true") {
-                document.getElementById(`${n}-${i}`).innerHTML = `<td><img src='imatges/fons20px.jpg'></td>`;
+                document.getElementById(`${n}-${i}`).innerHTML = `<td><img src='imatges/mina20px.jpg'></td>`;
             }
         }
     }
@@ -251,7 +266,17 @@ function temps() {
     }
     document.getElementById(`temps`).innerHTML = hores + ":" + minuts + ":" + segons;
     segons++;
+    tRecord = hores + ":" + minuts + ":" + segons;
+}
 
+//Funció que calcula el temps que s'ha trigat i compara el record
+function record() {
+    let diff = (tempsFinal - tempsInici) / 1000;
+    if (diff > tempsMax) {
+        tempsRecord = tRecord;
+        localStorage.setItem('tMax', diff);
+        localStorage.setItem("record", tempsRecord);
+    }
 }
 
 

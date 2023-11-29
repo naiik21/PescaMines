@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="pescaMines.css">
     <script src="pescaMines.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js"></script>
 </head>
 
 <body>
@@ -14,10 +15,12 @@
         <button id="inici" onclick="iniciarPartida()">Iniciar una partida</button>
         <button id="estats" onclick="estadistiques()">Estadístiques</button>
     </div>
-    <div>
+    <div id="joc">
         <div id="taulell"></div>
-        <span id="nBanderes"></span>
-        <span id="temps"></span>
+        <div id="extras">
+            <span id="nBanderes"></span>
+            <span id="temps"></span>
+        </div>
     </div>
 </body>
 
