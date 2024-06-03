@@ -55,11 +55,31 @@ function iniciarPartida() {
 //Funció que ens mostra les estadistiques de les partides 
 function estadistiques() {
     let partidesTotal = totalGuanyades + totalPerdudes;
+    const popup = new Popup({
+        id: "download",
+        title: "Download Instructions",
+        content: '<p>Total de partides: ' + partidesTotal +
+        '</p><br><p>Partides guayades(' + ((totalGuanyades * 100) / partidesTotal).toFixed(2) + "%): " + totalGuanyades +
+        '</p><br><p>Partides perdudes(' + ((totalPerdudes * 100) / partidesTotal).toFixed(2) + "%): " + totalPerdudes +
+        '</p><br><p>Temps record= ' + tempsRecord,
+        backgroundColor: "#000",
+        titleColor: "#fff",
+        textColor: "#fff",
+        closeColor: "#fff",
+        borderWidth: ".2em",
+        borderColor: "#fff",
+        linkColor: "#fff",
+        fontSizeMultiplier: 1.2,
+        titleMargin: "4%",
+        underlineLinks: true,
+    });
+    popup.show();
+    /*
     let estats = window.open("", "_blank");
     estats.document.write('<p>Total de partides: ' + partidesTotal +
         '</p><br><p>Partides guayades(' + ((totalGuanyades * 100) / partidesTotal).toFixed(2) + "%): " + totalGuanyades +
         '</p><br><p>Partides perdudes(' + ((totalPerdudes * 100) / partidesTotal).toFixed(2) + "%): " + totalPerdudes +
-        '</p><br><p>Temps record= ' + tempsRecord);
+        '</p><br><p>Temps record= ' + tempsRecord);*/
 }
 
 //Funció que crea el taulell de joc 
