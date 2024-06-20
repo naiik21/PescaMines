@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PescaMinas</title>
-    <link rel="stylesheet" href="pescaMines.css">
+    <link rel="stylesheet" href="pescaMines.css" />
     <script src="pescaMines.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.1/dist/confetti.browser.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@simondmc/popup-js@1.4.2/popup.min.js"></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div>
-        <img src="./imatges/bandera.jpg" alt="Banderas" height="20px">
-        <h1>PescaMinas</h1>
+      <h1>PescaMinas</h1>
+      <div class="container-logo">
+        <img
+          class="logo"
+          src="./imatges/bandera.jpg"
+          alt="Banderas"
+          height="50px" />
+      </div>
+      <div class="loader">
+        <span></span>
+      </div>
     </div>
     <div id="botons">
-        <button id="inici" onclick="iniciarPartida()">Iniciar una partida</button>
-        <button id="estats" onclick="estadistiques()">Estadístiques</button>
+      <button id="inici" onclick="iniciarPartida()">Iniciar una partida</button>
+      <button id="estats" onclick="estadistiques()">Estadístiques</button>
     </div>
     <div id="joc">
-        <div id="taulell"></div>
-        <div id="extras">
-            <span id="nBanderes"></span>
-            <span id="temps"></span>
-        </div>
+      <div id="taulell"></div>
+      <div id="extras">
+        <span id="nBanderes"></span>
+        <span id="temps"></span>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
